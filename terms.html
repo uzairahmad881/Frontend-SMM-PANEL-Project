@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ClickCraze - Reset Password</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Navigation Section */
+        .sec1 {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 50px;
+            background-color: #333;
+            color: white;
+            flex-wrap: wrap;
+            position: relative;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s ease;
+        }
+        .logo:hover {
+            transform: scale(1.1);
+        }
+        .logo span {
+            color: blue;
+        }
+
+        /* Navigation Links */
+        .nav {
+            display: flex;
+            list-style: none;
+            padding: 0;
+        }
+
+        .nav li {
+            margin: 0 15px;
+        }
+
+        .nav li a {
+            text-decoration: none;
+            color: white;
+            font-size: 18px;
+            transition: 0.3s;
+        }
+
+        .nav li a:hover {
+            color: #ffcc00;
+        }
+
+        /* Hamburger Menu Icon */
+        .menu-icon {
+            display: none;
+            font-size: 28px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .menu-icon:hover {
+            color: #ffcc00;
+        }
+
+        /* Responsive Navigation */
+        @media (max-width: 768px) {
+            .menu-icon {
+                display: block;
+            }
+
+            .nav {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                width: 100%;
+                background-color: #333;
+                text-align: center;
+                padding: 10px 0;
+            }
+
+            .nav.active {
+                display: flex;
+            }
+
+            .nav li {
+                margin: 10px 0;
+            }
+        }
+
+        /* Section Heading */
+        .sec3 {
+            text-align: center;
+            padding: 30px;
+            font-size: 40px;
+        }
+
+        .p1 {
+            text-align: center;
+            font-size: 20px;
+            padding: 10px;
+        }
+
+        /* Reset Password Box */
+        .login-box {
+            max-width: 400px;
+            width: 100%;
+            padding: 20px;
+            background: #fff;
+            border: 2px solid #eee;
+            margin: 20px auto;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .login-box h2 {
+            margin-bottom: 15px;
+        }
+
+        input[type="email"], input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background: orange;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            display: block;
+            margin: 10px auto;
+            text-align: center;
+        }
+
+        button:hover {
+            background: darkorange;
+        }
+
+        footer {
+            text-align: center;
+            padding: 15px;
+            background-color: #f8f8f8;
+            font-size: 14px;
+            color: #333;
+            border-top: 2px solid #e5e5e5;
+        }
+
+        .footer-links {
+            margin-bottom: 5px;
+        }
+
+        .footer-links a {
+            text-decoration: none;
+            color: #2d4d9e;
+            font-weight: bold;
+            margin: 0 8px;
+            transition: 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: #ff6600;
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Navigation Section -->
+    <section class="sec1">
+        <a href="home.html" style="text-decoration: none; color: white;">
+            <h1 class="logo">Click<span>Craze</span></h1>
+        </a>
+        
+        <!-- Hamburger Menu Icon -->
+        <span class="menu-icon" onclick="toggleMenu()">&#9776;</span>
+
+        <ul class="nav">   
+            <li><a href="home.html">Home</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="terms.html">Terms</a></li>
+            <li><a href="login.html">Login</a></li>
+            <li><a href="signup.html">Signup</a></li>
+        </ul>
+    </section>
+
+    
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Terms and Conditions - SMM Panel</title>
+        <style>
+            /* General Styles */
+            body {
+                font-family: Arial, sans-serif;
+                margin: 0;
+                padding: 0;
+                background-color: #f4f4f9;
+                color: #333;
+            }
+    
+            /* Header */
+            .header {
+                text-align: center;
+                padding: 20px;
+                background-color: #4a60f7;
+                color: white;
+                font-size: 24px;
+                font-weight: bold;
+            }
+    
+            /* Terms Box */
+            .terms-box {
+                max-width: 800px;
+                background: white;
+                padding: 20px;
+                margin: 30px auto;
+                border-radius: 10px;
+                box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+                overflow-y: auto;
+                max-height: 400px;
+                border: 2px solid #ddd;
+            }
+    
+            /* Scrollable Content */
+            .terms-content {
+                text-align: left;
+                padding: 10px;
+                font-size: 16px;
+                line-height: 1.6;
+            }
+    
+            /* Accept Button */
+            .accept-btn {
+                display: block;
+                width: 200px;
+                padding: 12px;
+                margin: 20px auto;
+                background: linear-gradient(145deg, #4a60f7, #3046c7);
+                color: white;
+                font-size: 18px;
+                font-weight: bold;
+                border: none;
+                border-radius: 8px;
+                cursor: pointer;
+                text-align: center;
+                transition: all 0.3s ease-in-out;
+                box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2);
+            }
+    
+            .accept-btn:hover {
+                transform: translateY(-3px);
+                box-shadow: 6px 6px 15px rgba(0, 0, 0, 0.3);
+            }
+    
+            .accept-btn:active {
+                transform: translateY(2px);
+                box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
+            }
+    
+            /* Footer */
+            .footer {
+                text-align: center;
+                padding: 15px;
+                font-size: 14px;
+                color: #555;
+            }
+        </style>
+    </head>
+    <body>
+    
+        <!-- Header -->
+        <div class="header">
+            Terms and Conditions - ClickCraze
+        </div>
+    
+        <!-- Terms and Conditions Box -->
+        <div class="terms-box">
+            <div class="terms-content">
+                <h3>1. Introduction</h3>
+                <p>Welcome to ClickCraze SMM Panel! By accessing our services, you agree to abide by the terms outlined below.</p>
+    
+                <h3>2. Service Usage</h3>
+                <p>We provide digital marketing and SMM services. Misuse of our services for illegal activities is strictly prohibited.</p>
+    
+                <h3>3. Payments & Refunds</h3>
+                <p>All payments are non-refundable. Refunds are only processed if the service is not delivered as promised.</p>
+    
+                <h3>4. Account Termination</h3>
+                <p>Violation of our terms may result in the termination of your account without prior notice.</p>
+    
+                <h3>5. Policy Updates</h3>
+                <p>We reserve the right to update these terms at any time. Continued usage of our platform implies acceptance.</p>
+    
+                <h3>6. Contact Us</h3>
+                <p>If you have any questions regarding our terms, please reach out to our support team.</p>
+            </div>
+        </div>
+        
+    <!-- Accept Button -->
+    <button class="accept-btn" id="accept-btn">Accept & Continue</button>
+    <!-- Footer Section -->
+    <footer>
+        <div class="footer-links">
+            <a href="home.html">Home</a> | 
+            <a href="services.html">Services</a> | 
+            <a href="login.html">Login</a> | 
+            <a href="signup.html">Sign Up</a> | 
+            <a href="terms.html">Terms</a> | 
+            <a href="#">About Us</a> | 
+            <a href="#">Contact Us</a>
+        </div>
+        <p>Copyright © 2020 - 2025 <b>ClickCraze.com</b>. All Rights Reserved.</p>
+        <p>We Accept: Easypassia, Jazzcash, /MasterCard</p>
+    </footer>
+
+    <!-- JavaScript for Menu Toggle -->
+    <script>
+        function toggleMenu() {
+            var nav = document.querySelector(".nav");
+            nav.classList.toggle("active");
+        }
+
+
+        document.getElementById("accept-btn").addEventListener("click", function() {
+            alert("✅ You have accepted the Terms and Conditions.");
+            window.location.href = "home.html"; // Redirect to homepage
+        });
+    </script>
+
+    <!-- Google reCAPTCHA Script -->
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+</body>
+</html>

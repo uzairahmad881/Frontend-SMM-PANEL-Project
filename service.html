@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard - Services</title>
+    <link rel="stylesheet" href="/Frontend/assests/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            display: flex;
+        }
+        .sidebar {
+            width: 200px;
+    height: 100vh;
+    background: #333;
+    color: #fff;
+    padding: 20px;
+    position: fixed;
+        }
+        .sidebar h2 {
+            color: #ff6600;
+            margin-bottom: 20px;
+        }
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+        }
+        .sidebar ul li {
+            margin: 10px 0;
+        }
+        .sidebar ul li a {
+            color: #fff;
+            text-decoration: none;
+            display: block;
+            padding: 10px;
+            background: #444;
+            border-radius: 5px;
+        }
+        .content {
+            margin-left: 260px; /* Pushes content right */
+            padding: 20px;
+            width: calc(100% - 260px);
+        }
+        .service-container {
+            width: 100%;
+            max-width: 900px;
+            margin: auto;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .service-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .service-table th, .service-table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 2px solid #ddd;
+        }
+        .service-table th {
+            background: #007bff;
+            color: white;
+        }
+        .order-button {
+            background: green;
+            color: white;
+            padding: 8px 12px;
+            border: none;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+        .order-button:hover {
+            background: darkgreen;
+        }
+        #searchBox {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <h2>Click<span style="color: blue;">Craze</span></h2>
+        <ul>
+            
+            <li><a href="dashboard.html"  onclick="loadPage('new-order')">New Order</a></li>
+            <li><a href="order-history.html" onclick="showSection('orders'); return false;">Orders</a></li>
+            <li><a href="service.html" style="background: #007bff;">Services</a></li>
+            <!-- locked sections -->
+            <li>
+                <a href="#" class="locked-option">
+                    <i class="fas fa-lock lock-icon"></i> <!-- Font Awesome lock icon -->
+                    Drip Feed
+                </a>
+            </li>
+            <li>
+                <a href="#" class="locked-option">
+                    <i class="fas fa-lock lock-icon"></i> <!-- Font Awesome lock icon -->
+                    Add Fund
+                </a>
+            </li>
+            <li><a href="payment.html">Payment</a></li>
+            <li><a href="transaction.html">Transactions</a></li>
+            <li><a href="support-ticket.html" >Support Tickets</a></li>
+            <li><a href="#" onclick="openUserInfo()">User Information</a></li>
+            <li><a href="login.html" onclick="logoutUser()">Logout</a></li>
+        </ul>
+    </div>
+
+    <div class="content">
+        <div class="service-container">
+            <h2>Available Services</h2>
+            <input type="text" id="searchBox" placeholder="Search services..." onkeyup="filterServices()">
+            
+            <table class="service-table" id="services-list">
+                <tr>
+                    <th>Service Name</th>
+                    <th>Price</th>
+                    <th>Action</th>
+                </tr>
+                
+            </table>
+        </div>
+    </div>
+ <!-- User Information Section (Hidden by Default) -->
+ <div id="user-info" class="user-info-section">
+    <div class="user-info-content">
+        <h2>User Information</h2>
+        <p><strong>Name:</strong> Uzair Ahmad</p>
+        <p><strong>Email:</strong> uzairahmad8875@gmail.com</p>
+        <p><strong>Account Type:</strong> Admin</p>
+
+        <div class="user-actions">
+           
+            <button onclick="generateApiKey()">API Key</button>
+            <button onclick="resetPassword()">Reset Password</button>
+            <button onclick="logout()">Logout</button>
+        </div>
+
+        <button class="close-btn" onclick="closeUserInfo()">Close</button>
+    </div>
+</div>
+
+    <script>
+        function filterServices() {
+            let input = document.getElementById("searchBox").value.toLowerCase();
+            let rows = document.querySelectorAll("#services-list tr:not(:first-child)");
+            
+            rows.forEach(row => {
+                let serviceName = row.cells[0].textContent.toLowerCase();
+                row.style.display = serviceName.includes(input) ? "" : "none";
+            });
+        }
+    </script>
+        <script src="/Frontend/assests/script.js"></script>
+
+</body>
+</html>

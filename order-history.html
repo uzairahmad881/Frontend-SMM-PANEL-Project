@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order History - SMM Panel</title>
+    <link rel="stylesheet" href="/Frontend/assests/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <style>
+        
+        body {
+            font-family: Arial, sans-serif;
+            background: #f2f2f2;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+       
+        /* Main Content */
+        .main-content {
+            margin-left: 250px;
+            padding: 20px;
+            width: calc(100% - 250px);
+        }
+
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        /* Order Table */
+        .order-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        .order-table th, .order-table td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+
+        .order-table th {
+            background: #3b82f6;
+            color: white;
+        }
+
+        .order-table tbody tr:nth-child(even) {
+            background: #f9f9f9;
+        }
+
+        .status-pending {
+            background: #ffcc00;
+            padding: 5px 10px;
+            border-radius: 5px;
+            color: #fff;
+        }
+
+        .status-completed {
+            background: #28a745;
+            padding: 5px 10px;
+            border-radius: 5px;
+            color: #fff;
+        }
+
+        .status-cancelled {
+            background: #dc3545;
+            padding: 5px 10px;
+            border-radius: 5px;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="sidebar">
+        <h2>Click<span style="color: blue;">Craze</span></h2>
+        <ul>
+            
+            <li><a href="dashboard.html"  onclick="loadPage('new-order')">New Order</a></li>
+            <li><a href="order-history.html"style="background: #007bff;" onclick="showSection('orders'); return false;">Orders</a></li>
+            <li><a href="service.html">Services</a></li>
+            <!-- locked sections -->
+            <li>
+                <a href="#" class="locked-option">
+                    <i class="fas fa-lock lock-icon"></i> <!-- Font Awesome lock icon -->
+                    Drip Feed
+                </a>
+            </li>
+            
+            <li>
+                <a href="#" class="locked-option">
+                    <i class="fas fa-lock lock-icon"></i> <!-- Font Awesome lock icon -->
+                    Add Fund
+                </a>
+            </li>
+            <li><a href="payment.html">Payment</a></li>
+            <li><a href="transaction.html">Transactions</a></li>
+            <li><a href="support-ticket.html" >Support Tickets</a></li>
+            <li><a href="#" onclick="openUserInfo()">User Information</a></li>
+            <li><a href="login.html" onclick="logoutUser()">Logout</a></li>
+        </ul>
+    </div>
+    <div class="main-content">
+        <div class="container">
+            <h1>Order History</h1>
+            <table class="order-table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Service</th>
+                        <th>Quantity</th>
+                        <th>Price</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody id="orderTable">
+                    <!-- Orders will be loaded here dynamically -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+ <!-- User Information Section (Hidden by Default) -->
+ <div id="user-info" class="user-info-section">
+    <div class="user-info-content">
+        <h2>User Information</h2>
+        <p><strong>Name:</strong> Uzair Ahmad</p>
+        <p><strong>Email:</strong> uzairahmad8875@gmail.com</p>
+        <p><strong>Account Type:</strong> Admin</p>
+
+        <div class="user-actions">
+           
+            <button onclick="generateApiKey()">API Key</button>
+            <button onclick="resetPassword()">Reset Password</button>
+            <button onclick="logout()">Logout</button>
+        </div>
+
+        <button class="close-btn" onclick="closeUserInfo()">Close</button>
+    </div>
+</div>
+
+    <script>
+        async function loadOrders() {
+            try {
+                let response = await fetch('fetch_orders.php');
+                let orders = await response.json();
+                
+                let tableBody = document.getElementById("orderTable");
+                tableBody.innerHTML = ""; // Clear existing data
+
+                orders.forEach(order => {
+                    let row = `<tr>
+                        <td>${order.id}</td>
+                        <td>${order.service}</td>
+                        <td>${order.quantity}</td>
+                        <td>$${order.price}</td>
+                        <td><span class="status-${order.status.toLowerCase()}">${order.status}</span></td>
+                    </tr>`;
+                    tableBody.innerHTML += row;
+                });
+            } catch (error) {
+                console.error("Error fetching orders:", error);
+            }
+        }
+
+        window.onload = loadOrders;
+    </script>
+    <script src="/Frontend/assests/script.js"></script>
+
+</body>
+</html>

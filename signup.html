@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ClickCraze - Sign Up</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        /* Navigation Section */
+.sec1 {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 50px;
+            background-color: #333;
+            color: white;
+            flex-wrap: wrap;
+            position: relative;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s ease;
+        }
+        .logo:hover {
+            transform: scale(1.1);
+        }
+        .logo span {
+            color: blue;
+        }
+
+        /* Navigation Links */
+        .nav {
+            display: flex;
+            list-style: none;
+            padding: 0;
+        }
+
+        .nav li {
+            margin: 0 15px;
+        }
+
+        .nav li a {
+            text-decoration: none;
+            color: white;
+            font-size: 18px;
+            transition: 0.3s;
+        }
+
+        .nav li a:hover {
+            color: #ffcc00;
+        }
+
+        /* Hamburger Menu Icon */
+        .menu-icon {
+            display: none;
+            font-size: 28px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .menu-icon:hover {
+            color: #ffcc00;
+        }
+
+        /* Responsive Navigation */
+        @media (max-width: 768px) {
+            .menu-icon {
+                display: block;
+            }
+
+            .nav {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                width: 100%;
+                background-color: #333;
+                text-align: center;
+                padding: 10px 0;
+            }
+
+            .nav.active {
+                display: flex;
+            }
+
+            .nav li {
+                margin: 10px 0;
+            }
+        }
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 150vh;
+        }
+        .signup-container {
+            width: 400px;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .signup-container h2 {
+            margin-bottom: 20px;
+        }
+        .signup-container p {
+            color: #666;
+            margin-bottom: 20px;
+        }
+        input[type="text"], input[type="email"], input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .terms {
+            display: flex;
+            align-items: center;
+            justify-content: left;
+            margin: 10px 0;
+        }
+        .terms input {
+            margin-right: 5px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background: orange;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        button:hover {
+            background: darkorange;
+        }
+        .login-link {
+            margin-top: 15px;
+            display: block;
+        }
+        footer {
+    text-align: center;
+    padding: 15px;
+    background-color: #f8f8f8; /* Light background */
+    font-size: 14px;
+    color: #333; /* Dark grey text */
+    border-top: 2px solid #e5e5e5;
+}
+
+.footer-links {
+    margin-bottom: 5px;
+}
+
+.footer-links a {
+    text-decoration: none;
+    color: #2d4d9e; /* Blue color */
+    font-weight: bold;
+    margin: 0 8px;
+    transition: 0.3s;
+}
+
+.footer-links a:hover {
+    color: #ff6600; /* Orange hover effect */
+}
+    </style>
+</head>
+<body>
+    <!-- Navigation Section -->
+    <section class="sec1">
+        <a href="home.html" style="text-decoration: none; color: white;">
+            <h1 class="logo">Click<span>Craze</span></h1>
+        </a>
+        
+        <!-- Hamburger Menu Icon -->
+        <span class="menu-icon" onclick="toggleMenu()">&#9776;</span>
+
+        <ul class="nav">   
+            <li><a href="home.html">Home</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="terms.html">Terms</a></li>
+            <li><a href="login.html">Login</a></li>
+            <li><a href="signup.html">Signup</a></li>
+        </ul>
+    </section>
+    <div class="container">
+        <div class="signup-container">
+            <h2>Sign Up</h2>
+            <p>Create your account to access the best SMM panel services.</p>
+            <form id="signupForm">
+                <label>WhatsApp Number</label>
+                <input type="text" placeholder="Enter your WhatsApp number" required>
+                
+                <label>Full Name</label>
+                <input type="text" placeholder="Enter your full name" required>
+                
+                <label>Username</label>
+                <input type="text" placeholder="Choose a username" required>
+                
+                <label>Email</label>
+                <input type="email" placeholder="Enter your email" required>
+                
+                <label>Password</label>
+                <input type="password" placeholder="Create a password" required>
+                
+                <label>Confirm Password</label>
+                <input type="password" placeholder="Confirm your password" required>
+                
+                <div class="terms">
+                    <input type="checkbox" id="terms" required>
+                    <label for="terms">I agree to the <a href="terms.html">Terms & Conditions</a></label>
+                </div>
+                
+                <button type="submit">Sign Up</button>
+            </form>
+            <p class="login-link">Already have an account? <a href="login.html">Login</a></p>
+        </div>
+    </div>
+    
+  
+    
+            <p class="login-link">Already have an account? <a href="login.html">Login</a></p>
+        </div>
+    </div>
+     <!-- Footer Section -->
+     
+        <footer>
+            <div class="footer-links">
+                <a href="home.html">Home</a> | 
+                <a href="services.html">Services</a> | 
+                <a href="login.html">Login </a> | 
+                <a href="signup.html">sign up</a> | 
+                <a href="terms.html">Terms</a> | 
+                <a href="#">About us</a> | 
+                <a href="#">Contact Us</a>
+            </div>
+            <p>Copyright © 2020 - 2025 <b>ClickCraze.com</b>. All Rights Reserved.</p>
+            <p>We Accept: VISA/MasterCard</p>
+        </footer>
+   
+    </script>
+
+<script>
+    document.getElementById("signupForm").addEventListener("submit", function(event) {
+        event.preventDefault(); // Prevent default form submission
+        
+        // Here, you can add any additional form validation if needed.
+
+        // Simulate a successful signup
+        alert("Signup successful! Redirecting to dashboard...");
+        
+        // Redirect to the dashboard
+        window.location.href = "dashboard.html"; // Change to your actual dashboard URL
+    });
+</script>
+
+</body>
+</html>

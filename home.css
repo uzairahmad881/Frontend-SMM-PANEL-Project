@@ -1,0 +1,630 @@
+/* General Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* Navigation Styles */
+.sec1 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background: #222;
+    color: white;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.logo span {
+    color: blue;
+
+}
+
+/* Navigation Menu */
+.nav {
+    display: flex;
+    list-style: none;
+    gap: 20px;
+}
+
+.nav li {
+    list-style: none;
+}
+
+.nav a {
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+    transition: 0.3s;
+}
+
+.nav a:hover {
+    color: #ffcc00;
+}
+
+/* Hamburger Icon */
+#menu-icon {
+    font-size: 30px;
+    cursor: pointer;
+    display: none;
+}
+
+/* Responsive Navigation */
+@media screen and (max-width: 768px) {
+    .nav {
+        display: none;
+        flex-direction: column;
+        background: #333;
+        position: absolute;
+        top: 60px;
+        right: 0;
+        width: 200px;
+        text-align: center;
+        padding: 10px;
+        border-radius: 5px;
+    }
+
+    .nav.active {
+        display: flex;
+    }
+
+    #menu-icon {
+        display: block;
+    }
+
+    .nav li {
+        padding: 10px 0;
+    }
+}
+
+
+
+/* Home Container */
+
+    
+.sec2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+    background-color: #f9f3ee;
+}
+.container {
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+    max-width: 1000px;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+.intro {
+    width: 50%;
+    padding: 20px;
+}
+.login-box {
+    width: 50%;
+    padding: 20px;
+    background: #fff;
+    border-left: 2px solid #eee;
+}
+.login-box h2 {
+    margin-bottom: 15px;
+}
+input[type="text"], input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+button {
+    width: 100%;
+    padding: 10px;
+    background: orange;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+button:hover {
+    background: darkorange;
+}
+.forgot-password, p a {
+    display: block;
+    text-align: center;
+    margin-top: 10px;
+    color: orange;
+    text-decoration: none;
+}
+.forgot-password:hover, p a:hover {
+    text-decoration: underline;
+}
+footer {
+    text-align: center;
+    padding: 15px;
+    background-color: #f8f8f8; /* Light background */
+    font-size: 14px;
+    color: #333; /* Dark grey text */
+    border-top: 2px solid #e5e5e5;
+}
+
+.footer-links {
+    margin-bottom: 5px;
+}
+
+.footer-links a {
+    text-decoration: none;
+    color: #2d4d9e; /* Blue color */
+    font-weight: bold;
+    margin: 0 8px;
+    transition: 0.3s;
+}
+
+.footer-links a:hover {
+    color: #ff6600; /* Orange hover effect */
+}
+.smm-services {
+    text-align: center;
+    background-color: #f7f7fc; /* Light background */
+    padding: 50px 20px;
+    border-radius: 10px;
+}
+
+.smm-services h2 {
+    font-size: 32px;
+    font-weight: bold;
+    color: #1a1a2e;
+}
+
+.smm-services p {
+    font-size: 18px;
+    color: #4a4a6a;
+    margin-bottom: 15px;
+}
+
+.features {
+    font-size: 16px;
+    font-weight: bold;
+    color: #222;
+    margin-bottom: 40px;
+}
+
+.stats {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
+
+.stat-box {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 220px;
+    text-align: center;
+}
+
+.stat-box h3 {
+    font-size: 28px;
+    font-weight: bold;
+    color: #1a1a2e;
+}
+
+.stat-box p {
+    font-size: 16px;
+    color: #4a4a6a;
+}
+.smm-panel {
+    text-align: center;
+    background-color: white;
+    padding: 50px 20px;
+    border-radius: 10px;
+    color: #222;
+}
+
+.smm-panel h2 {
+    font-size: 32px;
+    font-weight: bold;
+    color: #1a1a2e;
+}
+
+.smm-panel p {
+    font-size: 18px;
+    color: #4a4a6a;
+    margin-bottom: 20px;
+}
+
+.smm-steps {
+    text-align: left;
+    max-width: 900px;
+    margin: 0 auto;
+    list-style-type: none;
+    padding: 0;
+}
+
+.smm-steps li {
+    font-size: 16px;
+    line-height: 1.8;
+    margin-bottom: 10px;
+}
+
+.smm-steps li strong {
+    color: #1a1a2e;
+}
+
+.smm-actions {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.action-box {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 180px;
+    text-align: center;
+}
+
+.action-box i {
+    font-size: 30px;
+    color: #1a1a2e;
+    margin-bottom: 10px;
+}
+
+.action-box p {
+    font-size: 16px;
+    color: #4a4a6a;
+}
+/* Main Section */
+.why-us {
+    text-align: center;
+    background-color: #f5f5fc;
+    padding: 50px 20px;
+    border-radius: 10px;
+    color: #222;
+}
+
+/* Heading Styling */
+.why-us h2 {
+    font-size: 32px;
+    font-weight: bold;
+    color: #1a1a2e;
+}
+
+/* Paragraph Styling */
+.why-us p {
+    font-size: 18px;
+    color: #4a4a6a;
+    margin-bottom: 10px;
+}
+
+/* Benefits List */
+.benefits-list {
+    list-style-type: none;
+    padding: 0;
+    font-size: 16px;
+    color: #1a1a2e;
+    font-weight: bold;
+}
+
+/* Benefits Container (Grid Layout) */
+.benefits-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    max-width: 1000px;
+    margin: 30px auto;
+}
+
+/* Benefit Boxes */
+.benefit-box {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s ease-in-out;
+}
+
+/* Box Hover Effect */
+.benefit-box:hover {
+    transform: translateY(-5px);
+}
+
+/* Icons Inside Boxes */
+.benefit-box i {
+    font-size: 40px;
+    color: #1a1a2e;
+    margin-bottom: 10px;
+}
+
+/* Text Inside Boxes */
+.benefit-box h3 {
+    font-size: 18px;
+    font-weight: bold;
+    color: #1a1a2e;
+    margin-bottom: 5px;
+}
+
+.benefit-box p {
+    font-size: 14px;
+    color: #4a4a6a;
+}
+/* Section Styling */
+.panel-features {
+    text-align: center;
+    background-color: blue;
+    padding: 50px 20px;
+    border-radius: 10px;
+    color: #222;
+}
+
+/* Heading Styling */
+.panel-features h2 {
+    font-size: 32px;
+    font-weight: bold;
+    color: white;
+    margin-bottom: 30px;
+}
+
+/* Features Container */
+.features-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+/* Feature Boxes */
+.feature-box {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s ease-in-out;
+}
+
+/* Hover Effect */
+.feature-box:hover {
+    transform: translateY(-5px);
+}
+
+/* Icons */
+.feature-box i {
+    font-size: 40px;
+    color: #1a1a2e;
+    margin-bottom: 10px;
+}
+
+/* Titles */
+.feature-box h3 {
+    font-size: 18px;
+    font-weight: bold;
+    color: #1a1a2e;
+    margin-bottom: 5px;
+}
+
+/* Paragraphs */
+.feature-box p {
+    font-size: 14px;
+    color: #4a4a6a;
+}
+/* Responsive Design */
+
+/* Tablets (Screens 768px and smaller) */
+@media (max-width: 768px) {
+    .sec1 {
+        flex-direction: column;
+        text-align: center;
+        padding: 15px 20px;
+    }
+    
+    .nav {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .container {
+        flex-direction: column;
+        width: 90%;
+        text-align: center;
+    }
+
+    .intro, .login-box {
+        width: 100%;
+        padding: 15px;
+    }
+
+    .stats, .smm-actions {
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+    
+    .stat-box, .action-box {
+        width: 45%;
+    }
+}
+
+/* Mobile (Screens 480px and smaller) */
+@media (max-width: 480px) {
+    .sec1 {
+        padding: 10px;
+    }
+
+    .logo {
+        font-size: 20px;
+    }
+
+    .nav li {
+        margin: 5px 0;
+    }
+
+    .container {
+        width: 95%;
+        padding: 10px;
+    }
+
+    .intro h2, .login-box h2 {
+        font-size: 20px;
+    }
+
+    input[type="text"], input[type="password"], button {
+        padding: 8px;
+        font-size: 14px;
+    }
+
+    .stats, .smm-actions {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .stat-box, .action-box {
+        width: 100%;
+    }
+
+    .features-container, .benefits-container {
+        grid-template-columns: 1fr;
+    }
+}
+.marq{
+    background-color: yellow;
+    font-size: 20px;
+    font-weight: 700;
+    color: #333;
+
+}
+
+/* Faq Question */
+ /* FAQ Title */
+ .faq-title1{
+    font-size: 32px;
+    font-weight: bold;
+    color: black;
+    
+    text-align: center;
+    padding: 10px 20px;
+    border-radius: 5px;
+ }
+
+/* FAQ Container */
+.faq-container {
+    max-width: 700px;
+    margin: 20px auto;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+}
+
+/* FAQ Question */
+.faq-question {
+    font-size: 18px;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    cursor: pointer;
+}
+
+.faq-question:hover {
+    background: #f0f0f0;
+}
+
+/* Answer Section (Initially Hidden) */
+.faq-answer {
+    display: none;
+    padding: 15px;
+    font-size: 16px;
+    text-align: left;
+    color: #333;
+    border-top: 1px solid #ddd;
+}
+
+/* Plus/Minus Icon */
+.faq-icon {
+    font-size: 22px;
+    font-weight: bold;
+    color: #333;
+}
+/* Section Styling */
+.smm-panel {
+    text-align: center;
+    padding: 50px 20px;
+    background-color: #f5f7ff;
+    position: relative;
+}
+
+/* Background Animation */
+.smm-panel::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('https://www.transparenttextures.com/patterns/dust.png');
+    opacity: 0.3;
+}
+
+/* Heading */
+.smm-title {
+    font-size: 28px;
+    font-weight: bold;
+    color: #161d3b;
+    margin-bottom: 15px;
+    position: relative;
+}
+
+/* Paragraph */
+.smm-text {
+    font-size: 18px;
+    color: #333;
+    position: relative;
+}
+
+/* 3D Motion Button */
+.smm-button {
+    background: linear-gradient(145deg, #4a60f7, #3046c7);
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    border: none;
+    
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease, transform 0.2s ease-in-out;
+    position: relative;
+   
+}
+
+.smm-button:hover {
+    background: linear-gradient(145deg, #3046c7, #4a60f7);
+    transform: translateY(-3px);
+    box-shadow: 6px 6px 15px rgba(0, 0, 0, 0.3);
+}
+
+.smm-button:active {
+    transform: translateY(2px);
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
+}

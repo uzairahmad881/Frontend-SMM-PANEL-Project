@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ClickCraze - Reset Password</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Navigation Section */
+        .sec1 {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 50px;
+            background-color: #333;
+            color: white;
+            flex-wrap: wrap;
+            position: relative;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s ease;
+        }
+        .logo:hover {
+            transform: scale(1.1);
+        }
+        .logo span {
+            color: blue;
+        }
+
+        /* Navigation Links */
+        .nav {
+            display: flex;
+            list-style: none;
+            padding: 0;
+        }
+
+        .nav li {
+            margin: 0 15px;
+        }
+
+        .nav li a {
+            text-decoration: none;
+            color: white;
+            font-size: 18px;
+            transition: 0.3s;
+        }
+
+        .nav li a:hover {
+            color: #ffcc00;
+        }
+
+        /* Hamburger Menu Icon */
+        .menu-icon {
+            display: none;
+            font-size: 28px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .menu-icon:hover {
+            color: #ffcc00;
+        }
+
+        /* Responsive Navigation */
+        @media (max-width: 768px) {
+            .menu-icon {
+                display: block;
+            }
+
+            .nav {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                width: 100%;
+                background-color: #333;
+                text-align: center;
+                padding: 10px 0;
+            }
+
+            .nav.active {
+                display: flex;
+            }
+
+            .nav li {
+                margin: 10px 0;
+            }
+        }
+
+        /* Section Heading */
+        .sec3 {
+            text-align: center;
+            padding: 30px;
+            font-size: 40px;
+        }
+
+        .p1 {
+            text-align: center;
+            font-size: 20px;
+            padding: 10px;
+        }
+
+        /* Reset Password Box */
+        .login-box {
+            max-width: 400px;
+            width: 100%;
+            padding: 20px;
+            background: #fff;
+            border: 2px solid #eee;
+            margin: 20px auto;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .login-box h2 {
+            margin-bottom: 15px;
+        }
+
+        input[type="email"], input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background: orange;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            display: block;
+            margin: 10px auto;
+            text-align: center;
+        }
+
+        button:hover {
+            background: darkorange;
+        }
+       
+        /* General Styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            color: #333;
+            text-align: center;
+        }
+
+        /* Header */
+        .header {
+            background-color: #4a60f7;
+            color: white;
+            padding: 20px;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        /* Search Bar */
+        .search-container {
+            margin: 20px auto;
+            max-width: 500px;
+        }
+
+        .search-bar {
+            width: 100%;
+            padding: 12px;
+            font-size: 16px;
+            border: 2px solid #4a60f7;
+            border-radius: 5px;
+            outline: none;
+        }
+
+        /* Services Grid */
+        .services-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Service Card */
+        .service-card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            text-align: center;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 6px 6px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .service-card h3 {
+            color: #4a60f7;
+            font-size: 18px;
+        }
+
+        .service-card p {
+            font-size: 14px;
+            color: #555;
+        }
+        footer {
+            text-align: center;
+            padding: 15px;
+            background-color: #f8f8f8;
+            font-size: 14px;
+            color: #333;
+            border-top: 2px solid #e5e5e5;
+        }
+
+        .footer-links {
+            margin-bottom: 5px;
+        }
+
+        .footer-links a {
+            text-decoration: none;
+            color: #2d4d9e;
+            font-weight: bold;
+            margin: 0 8px;
+            transition: 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: #ff6600;
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Navigation Section -->
+    <section class="sec1">
+        <a href="home.html" style="text-decoration: none; color: white;">
+            <h1 class="logo">Click<span>Craze</span></h1>
+        </a>
+        
+        <!-- Hamburger Menu Icon -->
+        <span class="menu-icon" onclick="toggleMenu()">&#9776;</span>
+
+        <ul class="nav">   
+            <li><a href="home.html">Home</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="terms.html">Terms</a></li>
+            <li><a href="login.html">Login</a></li>
+            <li><a href="signup.html">Signup</a></li>
+        </ul>
+    </section>
+
+    
+ <!-- Header -->
+ <div class="header">
+    🚀 Our ClickCraze Services 🚀
+</div>
+
+<!-- Search Bar -->
+<div class="search-container">
+    <input type="text" id="search-bar" class="search-bar" placeholder="Search for a service..." onkeyup="searchService()">
+</div>
+
+<!-- Services Grid -->
+<div class="services-container" id="services-list">
+    <!-- Services will be added dynamically -->
+</div>
+
+<!-- Footer -->
+
+
+<script>
+    // Service List Array
+    const services = [
+        "Instagram Followers", "Instagram Likes", "Instagram Views", "Instagram Comments",
+        "TikTok Followers", "TikTok Likes", "TikTok Views", "TikTok Shares",
+        "YouTube Subscribers", "YouTube Likes", "YouTube Views", "YouTube Watch Time",
+        "Facebook Page Likes", "Facebook Post Likes", "Facebook Video Views",
+        "Twitter Followers", "Twitter Retweets", "Twitter Likes", "Twitter Impressions",
+        "Snapchat Followers", "Snapchat Views", "Snapchat Story Impressions",
+        "LinkedIn Connections", "LinkedIn Endorsements", "LinkedIn Post Likes",
+        "Pinterest Followers", "Pinterest Repins", "Pinterest Likes",
+        "Telegram Members", "Telegram Views", "Telegram Reactions",
+        "Discord Members", "Discord Boosts", "Discord Engagements",
+        "Spotify Plays", "Spotify Followers", "Spotify Likes",
+        "Twitch Followers", "Twitch Views", "Twitch Likes",
+        "Reddit Upvotes", "Reddit Comments", "Reddit Subscribers",
+        "Quora Followers", "Quora Upvotes", "Quora Shares",
+        "Website Traffic", "Google Reviews", "Trustpilot Reviews",
+        "SEO Backlinks", "SEO Keyword Ranking", "Google AdSense Clicks",
+        "App Store Reviews", "Play Store Reviews", "Amazon Reviews",
+        "Crypto Airdrop Promotion", "NFT Promotion", "AI Bot Engagement",
+        "Ecommerce Traffic", "Dropshipping Product Views", "Affiliate Marketing Clicks",
+        "Custom Social Media Marketing", "Influencer Collaboration Services" ,"Netflix Servcies","Amazon Prime"
+    ];
+
+    // Function to Display Services Dynamically
+    function displayServices() {
+        const servicesContainer = document.getElementById("services-list");
+        servicesContainer.innerHTML = "";
+        services.forEach(service => {
+            const serviceCard = document.createElement("div");
+            serviceCard.classList.add("service-card");
+            serviceCard.innerHTML = `<h3>${service}</h3><p>Boost your social media presence with our ${service} services!</p>`;
+            servicesContainer.appendChild(serviceCard);
+        });
+    }
+
+    // Function to Search Services
+    function searchService() {
+        const searchTerm = document.getElementById("search-bar").value.toLowerCase();
+        const filteredServices = services.filter(service => service.toLowerCase().includes(searchTerm));
+        const servicesContainer = document.getElementById("services-list");
+        servicesContainer.innerHTML = "";
+        filteredServices.forEach(service => {
+            const serviceCard = document.createElement("div");
+            serviceCard.classList.add("service-card");
+            serviceCard.innerHTML = `<h3>${service}</h3><p>Boost your social media presence with our ${service} services!</p>`;
+            servicesContainer.appendChild(serviceCard);
+        });
+    }
+
+    // Load Services on Page Load
+    displayServices();
+</script>
+    <!-- Footer Section -->
+    <footer>
+        <div class="footer-links">
+            <a href="home.html">Home</a> | 
+            <a href="services.html">Services</a> | 
+            <a href="login.html">Login</a> | 
+            <a href="signup.html">Sign Up</a> | 
+            <a href="terms.html">Terms</a> | 
+            <a href="#">About Us</a> | 
+            <a href="#">Contact Us</a>
+        </div>
+        <p>Copyright © 2020 - 2025 <b>ClickCraze.com</b>. All Rights Reserved.</p>
+        <p>We Accept: VISA/MasterCard</p>
+    </footer>
+
+    <!-- JavaScript for Menu Toggle -->
+    <script>
+        function toggleMenu() {
+            var nav = document.querySelector(".nav");
+            nav.classList.toggle("active");
+        }
+    </script>
+
+    <!-- Google reCAPTCHA Script -->
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+</body>
+</html>

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ClickCraze - User Dashboard</title>
+    <link rel="stylesheet" href="/Frontend/assests/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <style>
+        .transaction-section {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+        }
+        .transaction-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        .transaction-table th, .transaction-table td {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+            text-align: left;
+        }
+        .transaction-table th {
+            background: #007bff;
+            color: white;
+        }
+        .status-success { color: green; font-weight: bold; }
+        .status-pending { color: orange; font-weight: bold; }
+        .status-failed { color: red; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <h2>Click<span style="color: blue;">Craze</span></h2>
+        <ul>
+            
+            <li><a href="dashboard.html"  onclick="loadPage('new-order')">New Order</a></li>
+            <li><a href="order-history.html" onclick="showSection('orders'); return false;">Orders</a></li>
+            <li><a href="service.html">Services</a></li>
+            <!-- locked sections -->
+            <li>
+                <a href="#" class="locked-option">
+                    <i class="fas fa-lock lock-icon"></i> <!-- Font Awesome lock icon -->
+                    Drip Feed
+                </a>
+            </li>
+            <li>
+                <a href="#" class="locked-option">
+                    <i class="fas fa-lock lock-icon"></i> <!-- Font Awesome lock icon -->
+                    Add Fund
+                </a>
+            </li>
+            <li><a href="payment.html">Payment</a></li>
+            <li><a href="transaction.html" style="background: #007bff;">Transactions</a></li>
+            <li><a href="support-ticket.html" >Support Tickets</a></li>
+            <li><a href="#" onclick="openUserInfo()">User Information</a></li>
+            <li><a href="login.html" onclick="logoutUser()">Logout</a></li>
+        </ul>
+    </div>
+    
+    <div class="main-content">
+        <div class="transaction-section">
+            <h2>Transaction History</h2>
+            <table class="transaction-table">
+                <tr>
+                    <th>Transaction ID</th>
+                    <th>Amount</th>
+                    <th>Payment Method</th>
+                    <th>Status</th>
+                    <th>Date</th>
+                </tr>
+                <tr>
+                    <td>#TXN12345</td>
+                    <td>Rs 5000</td>
+                    <td>PayPal</td>
+                    <td class="status-success">Success</td>
+                    <td>2025-02-15</td>
+                </tr>
+                <tr>
+                    <td>#TXN12346</td>
+                    <td>Rs 2000</td>
+                    <td>Stripe</td>
+                    <td class="status-pending">Pending</td>
+                    <td>2025-02-14</td>
+                </tr>
+                <tr>
+                    <td>#TXN12347</td>
+                    <td>Rs 1500</td>
+                    <td>Bank Transfer</td>
+                    <td class="status-failed">Failed</td>
+                    <td>2025-02-13</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+ <!-- User Information Section (Hidden by Default) -->
+ <div id="user-info" class="user-info-section">
+    <div class="user-info-content">
+        <h2>User Information</h2>
+        <p><strong>Name:</strong> Uzair Ahmad</p>
+        <p><strong>Email:</strong> uzairahmad8875@gmail.com</p>
+        <p><strong>Account Type:</strong> Admin</p>
+
+        <div class="user-actions">
+           
+            <button onclick="generateApiKey()">API Key</button>
+            <button onclick="resetPassword()">Reset Password</button>
+            <button onclick="logout()">Logout</button>
+        </div>
+
+        <button class="close-btn" onclick="closeUserInfo()">Close</button>
+    </div>
+</div>
+    <script>
+        function logoutUser() {
+            alert("Logging out...");
+            window.location.href = "login.html";
+        }
+    </script>
+    
+    <script src="/Frontend/assests/script.js"></script>
+
+</div>
+</body>
+</html>
