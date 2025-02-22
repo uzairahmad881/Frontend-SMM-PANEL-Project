@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Manage Services</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 900px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+        }
+        .actions {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+        button {
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .add-service { background: #007bff; color: white; }
+        .back-button { background: #28a745; color: white; }
+        .edit { background: #ffc107; color: black; }
+        .delete { background: #dc3545; color: white; }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+        th { background-color: #007bff; color: white; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Manage Services</h1>
+        <div class="actions">
+            <button class="back-button" onclick="goBack()">Back to Dashboard</button>
+            <button class="add-service" onclick="openServiceModal()">Add Service</button>
+        </div>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Service Name</th>
+                    <th>Price</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="serviceTableBody">
+                <!-- Dynamic rows -->
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        let services = [
+          
+        ];
+        
+        function renderServices() {
+            const tableBody = document.getElementById('serviceTableBody');
+            tableBody.innerHTML = '';
+            services.forEach(service => {
+                const row = `<tr>
+                    <td>${service.id}</td>
+                    <td>${service.name}</td>
+                    <td>${service.price}</td>
+                    <td>
+                        <button class="edit" onclick="editService(${service.id})">Edit</button>
+                        <button class="delete" onclick="deleteService(${service.id})">Delete</button>
+                    </td>
+                </tr>`;
+                tableBody.innerHTML += row;
+            });
+        }
+        
+        function openServiceModal() {
+            const serviceName = prompt("Enter Service Name:");
+            const servicePrice = prompt("Enter Price:");
+            if (serviceName && servicePrice) {
+                const newService = {
+                    id: services.length + 1,
+                    name: serviceName,
+                    price: `PKR-${servicePrice}`
+                };
+                services.push(newService);
+                renderServices();
+            }
+        }
+        
+        function editService(id) {
+            const service = services.find(s => s.id === id);
+            if (service) {
+                const newName = prompt("Edit Service Name:", service.name);
+                const newPrice = prompt("Edit Price:", service.price.replace('PKR', ''));
+                if (newName && newPrice) {
+                    service.name = newName;
+                    service.price = `PKR-${newPrice}`;
+                    renderServices();
+                }
+            }
+        }
+        
+        function deleteService(id) {
+            services = services.filter(s => s.id !== id);
+            renderServices();
+        }
+        
+        function goBack() {
+            window.history.back();
+        }
+        
+        renderServices();
+    </script>
+</body>
+</html>

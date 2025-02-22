@@ -3,111 +3,116 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ClickCraze-User Dashboard</title>
-    <link rel="stylesheet" href="/Frontend/assests/style.css">
+    <title>Admin Dashboard - SMM Panel</title>
+    <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
 </head>
 <body>
-    <div class="sidebar">
-        <h2>Click<span style="color: blue;">Craze</span></h2>
-        <ul>
+    <div class="dashboard-container">
+        <header>
+            <h1>Click<span style="color: blue;">Craze</span>  - Admin Dashboard</h1>
+            <a href="admin-login.html" class="logout">Logout</a>
+        </header>
+        <div class="dashboard-content">
+            <aside class="sidebar">
+                <nav>
+                    <ul>
+                     <li><a href="dashboard.html">Dashboard</a></li>
+                     <li><a href="manage-order.html">Manage Orders</a></li>
+                     <li><a href="manage-user.html">Manage Users</a></li>
+                     <li><a href="manage-service.html">Manage Services</a></li>
+                     <li><a href="payment.html">Payments & Transactions</a></li>
+                     <li><a href="support_tickets.html">Support Tickets</a></li>
+                     <li>
+                        <a href="#" class="locked-option">
+                            <i class="fas fa-lock lock-icon"></i> <!-- Font Awesome lock icon -->
+                            Website Settings
+                        </a>
+                    </li>
+                    </ul>
+                    
+                </nav>
+            </aside>
+            <main class="main-content">
+                <div class="metrics">
+                    <div class="metric-card">
+                        <h3>Total Orders</h3>
+                        <p id="total-orders">0</p>
+                    </div>
+                    <div class="metric-card">
+                        <h3>Revenue</h3>
+                        <p id="total-revenue">PKR-0</p>
+                    </div>
+                    <div class="metric-card">
+                        <h3>Total Users</h3>
+                        <p id="total-users">0</p>
+                    </div>
+                    <div class="metric-card">
+                        <h3>Total Services</h3>
+                        <p id="total-services">0</p>
+                    </div>
+                </div>
+                <h2>Recent Orders</h2>
+                <table id="orders-table">
+                    <thead>
+                        <tr>
+                            <th>Order ID</th>
+                            <th>User</th>
+                            <th>Service</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Orders will be dynamically loaded here -->
+                    </tbody>
+                </table>
+            </main>
+        </div>
+    </div>
+
+    <script>
+        async function fetchAdminData() {
+            // Simulating a fetch request to your backend
+            const response = await fetch('fetch_admin_data.php'); // Replace with your actual PHP file
+            const data = await response.json();
             
-            <li><a href="dashboard.html"  style="background: #007bff;"onclick="loadPage('new-order')">New Order</a></li>
-            <li><a href="order-history.html" onclick="showSection('orders'); return false;">Orders</a></li>
-            <li><a href="service.html">Services</a></li>
-            <!-- locked sections -->
-            <li>
-                <a href="#" class="locked-option">
-                    <i class="fas fa-lock lock-icon"></i> <!-- Font Awesome lock icon -->
-                    Drip Feed
-                </a>
-            </li>
-            <li>
-                <a href="#" class="locked-option">
-                    <i class="fas fa-lock lock-icon"></i> <!-- Font Awesome lock icon -->
-                    Add Fund
-                </a>
-            </li>
-            <li><a href="payment.html">Payment</a></li>
-            <li><a href="transaction.html">Transactions</a></li>
-            <li><a href="support-ticket.html" >Support Tickets</a></li>
-            <li><a href="#" onclick="openUserInfo()">User Information</a></li>
-            <li><a href="login.html" onclick="logoutUser()">Logout</a></li>
-        </ul>
-    </div>
-    
-    <div class="main-content">
-        <div class="stats">
-            <div class="stat-box">
-                <h4>Total Spent</h4>
-                <p>Rs 28880.6388</p>
-            </div>
-            <div class="stat-box">
-                <h4>Total Orders</h4>
-                <p>42928</p>
-            </div>
-            <div class="stat-box">
-                <h4>Total Balance</h4>
-                <p>Rs 200.0342 </p>
-            </div>
-            <div class="stat-box">
-                <h4>Account Status</h4>
-                <p>RESELLER</p>
-            </div>
-        </div>
+            // Update metrics
+            document.getElementById('total-orders').innerText = data.totalOrders;
+            document.getElementById('total-revenue').innerText = `$${data.totalRevenue}`;
+            document.getElementById('total-users').innerText = data.totalUsers;
+            document.getElementById('total-services').innerText = data.totalServices;
 
-        <!-- Order Section -->
-        <div class="order-section">
-            <h3>New Order</h3>
-            <label>Category</label>
-            <select>
-                <option>New and Cheapest Services</option>
-            </select>
+            // Load recent orders into the table
+            const ordersTableBody = document.getElementById('orders-table').getElementsByTagName('tbody')[0];
+            data.recentOrders.forEach(order => {
+                const row = ordersTableBody.insertRow();
+                row.innerHTML = `
+                    <td>${order.orderId}</td>
+                    <td>${order.user}</td>
+                    <td>${order.service}</td>
+                    <td>${order.status}</td>
+                    <td>
+                        <button onclick="approveOrder(${order.orderId})">Approve</button>
+                        <button onclick="cancelOrder(${order.orderId})">Cancel</button>
+                    </td>
+                `;
+            });
+        }
 
-            <label>Service</label>
-            <select>
-                <option>📺 TikTok Video Views - Rs 0.28 per 1000</option>
-            </select>
+        function approveOrder(orderId) {
+            // Handle order approval logic here
+            alert(`Order ${orderId} approved.`);
+        }
 
-            <label>Average Time</label>
-            <input type="text" value="2 hours and 44 minutes" disabled>
+        function cancelOrder(orderId) {
+            // Handle order cancellation logic here
+            alert(`Order ${orderId} canceled.`);
+        }
 
-            <label>Link</label>
-            <input type="text" placeholder="Enter Video Link">
-
-            <label>Quantity</label>
-            <input type="number" placeholder="Min: 1000 - Max: 2147483647">
-
-            <label>Charge</label>
-            <input type="text" placeholder="Calculated Automatically" disabled>
-
-            <button class="submit-btn">Submit</button>
-        </div>
-    </div>
-
-    <!-- User Information Section (Hidden by Default) -->
-<div id="user-info" class="user-info-section">
-    <div class="user-info-content">
-        <h2>User Information</h2>
-        <p><strong>Name:</strong> Uzair Ahmad</p>
-        <p><strong>Email:</strong> uzairahmad8875@gmail.com</p>
-        <p><strong>Account Type:</strong> Admin</p>
-
-        <div class="user-actions">
-           
-            <button onclick="generateApiKey()">API Key</button>
-            <button onclick="resetPassword()">Reset Password</button>
-            <button onclick="logout()">Logout</button>
-        </div>
-
-        <button class="close-btn" onclick="closeUserInfo()">Close</button>
-    </div>
-</div>
-
-
-    <script src="/Frontend/assests/script.js"></script>
-    
-</body>  
+        window.onload = fetchAdminData; // Load data when the page is ready
+    </script>
+</body>
 </html>
